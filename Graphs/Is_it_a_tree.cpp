@@ -34,14 +34,13 @@ vb vis;
 
 void DFS(int u) {
     vis[u] = true;
-    for (auto v: a[u]) {
-        if (!vis[v]) DFS(v);
+    for (auto v : a[u]) {
+        if (! vis[v]) DFS(v);
     }
 }
 
 void __fouda_0x01() {
-    int n, m, answer = 0;
-    cin >> n >> m;
+    int n , m; cin >> n >> m;
     a.assign(n + 1, {});
     vis.assign(n + 1, 0);
     for (int i = 1; i <= m; ++i) {
@@ -50,14 +49,15 @@ void __fouda_0x01() {
         a[v].push_back(u);
     }
 
+    int segCount = 0;
     for (int i = 1; i <= n; ++i) {
         if (! vis[i]) {
             DFS(i);
-            answer++;
+            ++segCount;
         }
     }
 
-    cout << ((answer == 1 && (n == m + 1)) ? "YES" : "NO") << endl;
+    cout << ((segCount == 1 && (n == (m + 1))) ? "YES" : "NO") << endl;
 }
  
 int32_t main()
